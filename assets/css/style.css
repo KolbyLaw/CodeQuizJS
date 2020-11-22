@@ -1,0 +1,65 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    background-color: lightcyan;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: lightseagreen;
+    border-radius: 10px;
+    padding: 50px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.btn {
+    background-color: darkgray;
+    border: 1px solid;
+    border-color: rgb(27, 26, 26);
+    padding: 10px 10px;
+    font-weight: bold;
+}
+
+.btn.correct {
+    background-color: rgb(0, 63, 0);
+    color: white
+    
+}
+
+.btn.wrong {
+    background-color: rgb(124, 2, 2);
+    color: white;
+}
+
+.start-btn, .next-btn {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+}
+
+.button-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}

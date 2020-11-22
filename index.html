@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz!</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+
+<body>
+
+    <header>
+        <h1 class="page-title">JavaScript Quiz!</h1>
+        <p>Click the Start button below to begin the quiz. Note that you will have 60 seconds to complete this quiz. Wrong answers reduce your remaining time!</p>
+
+        <div class="high-score-tracker">SCORES</div>
+
+        <div class="timer">TIMER</div>
+
+    </header>
+
+
+    <main>
+        <div class="container">
+            <div id="quiz-container" class="hide">
+                <div id="question">Question Text</div>
+                <div id="answer-buttons" class="button-grid">
+                    <button class="btn">Answer 1</button>
+                    <button class="btn">Answer 2</button>
+                    <button class="btn">Answer 3</button>
+                    <button class="btn">Answer 4</button>
+                </div>
+            </div>
+
+            <div class="button-controls">
+                <button id="start-btn" class="start-btn btn">Start</button>
+                <button id="next-btn" class="next-btn btn hide">Next</button>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="./assets/js/script.js"></script>
+
+
+</body>
+
+</html>
