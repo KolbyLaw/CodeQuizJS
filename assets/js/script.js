@@ -1,21 +1,27 @@
+// Constant/Global Variables
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
 const questionContainerElement = document.getElementById('quiz-container');
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
 const resultElement = document.getElementById('result-container');
+const startContainer = document.getElementById('start-container');
 
 let highscores = [];
-let count = 30;
+let count = 60;
 let score = 0;
 let currentQuestionIndex
 
-document.getElementById('count').innerHTML=count;
-document.getElementById('score').innerHTML=score;
+    document.getElementById('count').innerHTML="Time Remaining: " + count + "(s)";
+    document.getElementById('highscore').innerHTML="Highest Score: " + 0;
+    document.getElementById('score').innerHTML="Your Current Score: " + score;
 
+
+// Primary Page Functionality
 function startQuiz() {
     timer()
     startButton.classList.add('hide')
+    startContainer.classList.add('hide')
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('hide')
     nextQuestion()
@@ -48,12 +54,13 @@ function resetState() {
     }
 
 }
+
 function selectAnswer(e) {
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
         if (correct) {
             score++
-            document.getElementById('score').innerHTML=score;
+            document.getElementById('score').innerHTML="Your Current Score: " + score;
         } else {
             if (count < 10) {
                 count = 0
@@ -88,74 +95,13 @@ function clearStatusClass(element) {
     element.classList.remove('wrong')
 }
 
-const questions = [
-    {
-        question: 'First question text placeholder',
-        answers: [
-            {text: 'true placeholder', correct: true},
-            {text: 'false placeholder 1', correct: false},
-            {text: 'false placeholder 2', correct: false},
-            {text: 'false placeholder 3', correct: false},
-        ]
-    },
-
-    {
-        question: 'Second question text placeholder',
-        answers: [
-            {text: 'false placeholder 1', correct: false},
-            {text: 'true placeholder', correct: true},
-            {text: 'false placeholder 2', correct: false},
-            {text: 'false placeholder 3', correct: false},
-        ]
-    },
-
-    {
-        question: 'Third question text placeholder',
-        answers: [
-            {text: 'false placeholder 1', correct: false},
-            {text: 'false placeholder 2', correct: false},
-            {text: 'true placeholder', correct: true},
-            {text: 'false placeholder 3', correct: false},
-        ]
-    },
-
-    {
-        question: 'Fourth question text placeholder',
-        answers: [
-            {text: 'false placeholder 1', correct: false},
-            {text: 'false placeholder 2', correct: false},
-            {text: 'false placeholder 3', correct: false},
-            {text: 'true placeholder', correct: true},
-        ]
-    },
-
-    {
-        question: 'Fifth question text placeholder',
-        answers: [
-            {text: 'true placeholder 1', correct: true},
-            {text: 'true placeholder 2', correct: true},
-            {text: 'false placeholder 1', correct: false},
-            {text: 'false placeholder 2', correct: false},
-        ]
-    }
-]
-
-
-
-
-
 function timer() {
     var interval = setInterval(function(){
-    document.getElementById('count').innerHTML=count;
+    document.getElementById('count').innerHTML= "Time Remaining: " + count + "(s)";
     count--;
     if (count < 1){  
         clearInterval(interval);
-        // document.getElementById('count').innerHTML='Done';
-
         showResult();
-
-        // or...
-       // alert("You're out of time!");
     }
     }, 1000);
 }
@@ -165,7 +111,7 @@ function showResult() {
     questionContainerElement.classList.add('hide');
     nextButton.classList.add('hide');
     resultElement.classList.remove('hide');
-    document.getElementById('result-score').innerHTML = score;
+    document.getElementById('result-score').innerHTML = "You scored: " + score + "! Thanks for taking the quiz!";
 }
 
 function save() {
@@ -174,10 +120,61 @@ function save() {
 }
 
 
+// Question Array
+const questions = [
+    {
+        question: 'What year was JavaScript created?',
+        answers: [
+            {text: '1995', correct: true},
+            {text: '2005', correct: false},
+            {text: '2015', correct: false},
+            {text: '1776', correct: false},
+        ]
+    },
+
+    {
+        question: 'Who designed JavaScript?',
+        answers: [
+            {text: 'Reggie Java', correct: false},
+            {text: 'Brendan Eich', correct: true},
+            {text: 'John Script', correct: false},
+            {text: 'J.V. Eich', correct: false},
+        ]
+    },
+
+    {
+        question: 'What character combination is used to contain an array?',
+        answers: [
+            {text: '!!', correct: false},
+            {text: '##', correct: false},
+            {text: '[]', correct: true},
+            {text: '{}', correct: false},
+        ]
+    },
+
+    {
+        question: 'How much Java would a Java Script script, if Java Script could script script?',
+        answers: [
+            {text: 'One Java', correct: false},
+            {text: 'Two Java', correct: false},
+            {text: 'Slightly less than half a Java', correct: false},
+            {text: 'All the Java', correct: true},
+        ]
+    },
+
+    {
+        question: 'Would you consider JavaScript to be the best coding language?',
+        answers: [
+            {text: 'Obviously! (Give me points)', correct: true},
+            {text: 'Top 5 at best.', correct: true},
+            {text: 'JavaWhat?', correct: true},
+            {text: 'If I never hear of it again I can die happy.', correct: true},
+        ]
+    }
+]
 
 
-
-
+//Event Listeners
 startButton.addEventListener('click', startQuiz)
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++

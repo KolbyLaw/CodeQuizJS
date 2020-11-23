@@ -14,19 +14,26 @@
 
     <header>
         <h1 class="page-title">JavaScript Quiz!</h1>
-        <p>Click the Start button below to begin the quiz. Note that you will have 60 seconds to complete this quiz. Wrong answers reduce your remaining time!</p>
 
-        <div class="score" id="score"></div>
+        <section class="score-section">
+            <div class="score" id="score"></div>
 
-        <div class="highscore" id="highscore"></div>
+            <div class="highscore" id="highscore"></div>
 
-        <div class="timer" id="count"></div>
+            <div class="timer" id="count"></div>
+        </section>
 
     </header>
 
 
     <main>
         <div class="container">
+            <div id="start-container">
+                <p>Click the Start button below to begin the quiz. Note that you will have 60 seconds to complete this quiz, and wrong answers will reduce your remaining time by 10!</p>
+            </div>
+            
+            <br>
+
             <div id="quiz-container" class="hide">
                 <div id="question">Question Text</div>
                 <div id="answer-buttons" class="button-grid">
@@ -39,11 +46,11 @@
 
             <div id="result-container" class="hide">
                 <div id="result-score"></div>
-
-                <form>
+                <br>
+                <form class="form-style">
                     <label for="initials">Enter initials:</label>
                     <input type="text" placeholder="Your Initials" id="initials" class="form-input"/>
-                    <button type="submit" onclick="save()">Submit</button>
+                    <button class ="submitbtn" type="submit" onclick="save()">Submit</button>
                 </form>
 
             </div>
